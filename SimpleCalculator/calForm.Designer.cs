@@ -65,7 +65,7 @@
             this.displayText.Multiline = true;
             this.displayText.Name = "displayText";
             this.displayText.ReadOnly = true;
-            this.displayText.Size = new System.Drawing.Size(268, 32);
+            this.displayText.Size = new System.Drawing.Size(258, 32);
             this.displayText.TabIndex = 0;
             this.displayText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -78,7 +78,7 @@
             this.resultText.Multiline = true;
             this.resultText.Name = "resultText";
             this.resultText.ReadOnly = true;
-            this.resultText.Size = new System.Drawing.Size(268, 33);
+            this.resultText.Size = new System.Drawing.Size(258, 33);
             this.resultText.TabIndex = 1;
             this.resultText.Text = "0";
             this.resultText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -93,6 +93,9 @@
             this.buttonBack.Text = "←";
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            this.buttonBack.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonBack.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonBack.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // buttonClear
             // 
@@ -104,6 +107,9 @@
             this.buttonClear.Text = "C";
             this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            this.buttonClear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonClear.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonClear.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // buttonClsOnce
             // 
@@ -114,6 +120,9 @@
             this.buttonClsOnce.TabIndex = 4;
             this.buttonClsOnce.Text = "CE";
             this.buttonClsOnce.UseVisualStyleBackColor = false;
+            this.buttonClsOnce.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonClsOnce.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonClsOnce.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // buttonFu
             // 
@@ -124,6 +133,9 @@
             this.buttonFu.TabIndex = 5;
             this.buttonFu.Text = "±";
             this.buttonFu.UseVisualStyleBackColor = false;
+            this.buttonFu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonFu.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonFu.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // buttonSqrt
             // 
@@ -134,6 +146,9 @@
             this.buttonSqrt.TabIndex = 6;
             this.buttonSqrt.Text = "√";
             this.buttonSqrt.UseVisualStyleBackColor = false;
+            this.buttonSqrt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonSqrt.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonSqrt.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // button7
             // 
@@ -143,6 +158,10 @@
             this.button7.TabIndex = 2;
             this.button7.Text = "7";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button7.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button7.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // button9
             // 
@@ -152,6 +171,10 @@
             this.button9.TabIndex = 3;
             this.button9.Text = "9";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button9.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button9.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // button8
             // 
@@ -161,6 +184,10 @@
             this.button8.TabIndex = 4;
             this.button8.Text = "8";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button8.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button8.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // buttonDivide
             // 
@@ -171,6 +198,10 @@
             this.buttonDivide.TabIndex = 5;
             this.buttonDivide.Text = "/";
             this.buttonDivide.UseVisualStyleBackColor = false;
+            this.buttonDivide.Click += new System.EventHandler(this.btnOperator_Click);
+            this.buttonDivide.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonDivide.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonDivide.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // buttonPerc
             // 
@@ -181,6 +212,9 @@
             this.buttonPerc.TabIndex = 6;
             this.buttonPerc.Text = "%";
             this.buttonPerc.UseVisualStyleBackColor = false;
+            this.buttonPerc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonPerc.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonPerc.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // button4
             // 
@@ -190,6 +224,10 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button4.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button4.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // button6
             // 
@@ -199,6 +237,10 @@
             this.button6.TabIndex = 3;
             this.button6.Text = "6";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button6.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button6.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // button5
             // 
@@ -208,6 +250,10 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "5";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button5.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button5.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // buttonMul
             // 
@@ -218,6 +264,10 @@
             this.buttonMul.TabIndex = 5;
             this.buttonMul.Text = "*";
             this.buttonMul.UseVisualStyleBackColor = false;
+            this.buttonMul.Click += new System.EventHandler(this.btnOperator_Click);
+            this.buttonMul.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonMul.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonMul.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // button15
             // 
@@ -228,6 +278,9 @@
             this.button15.TabIndex = 6;
             this.button15.Text = "1/x";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button15.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button15.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // button1
             // 
@@ -237,6 +290,10 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button1.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button1.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // button3
             // 
@@ -246,6 +303,10 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "3";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button3.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button3.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // button2
             // 
@@ -255,6 +316,10 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button2.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button2.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // buttonMinus
             // 
@@ -265,6 +330,10 @@
             this.buttonMinus.TabIndex = 5;
             this.buttonMinus.Text = "-";
             this.buttonMinus.UseVisualStyleBackColor = false;
+            this.buttonMinus.Click += new System.EventHandler(this.btnOperator_Click);
+            this.buttonMinus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonMinus.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonMinus.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // buttonCal
             // 
@@ -275,6 +344,10 @@
             this.buttonCal.TabIndex = 6;
             this.buttonCal.Text = "=";
             this.buttonCal.UseVisualStyleBackColor = false;
+            this.buttonCal.Click += new System.EventHandler(this.buttonCal_Click);
+            this.buttonCal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonCal.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonCal.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // button0
             // 
@@ -284,6 +357,10 @@
             this.button0.TabIndex = 2;
             this.button0.Text = "0";
             this.button0.UseVisualStyleBackColor = true;
+            this.button0.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button0.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.button0.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.button0.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // buttonDot
             // 
@@ -293,6 +370,10 @@
             this.buttonDot.TabIndex = 3;
             this.buttonDot.Text = ".";
             this.buttonDot.UseVisualStyleBackColor = true;
+            this.buttonDot.Click += new System.EventHandler(this.buttonDot_Click);
+            this.buttonDot.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonDot.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonDot.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
             // 
             // buttonAdd
             // 
@@ -303,6 +384,10 @@
             this.buttonAdd.TabIndex = 5;
             this.buttonAdd.Text = "+";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.btnOperator_Click);
+            this.buttonAdd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
+            this.buttonAdd.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
+            this.buttonAdd.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
             // 
             // panel1
             // 
@@ -318,7 +403,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 281);
+            this.ClientSize = new System.Drawing.Size(293, 281);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonCal);
             this.Controls.Add(this.button15);

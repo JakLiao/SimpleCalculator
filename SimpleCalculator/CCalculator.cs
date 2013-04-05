@@ -7,12 +7,36 @@ namespace SimpleCalculator
 {
     class CCalculator
     {
-        private string displayText = string.Empty;
-        private string resultText = string.Empty;
+        private string displayStr = string.Empty;
 
-        private char Opr;
+        public string DisplayStr
+        {
+            get { return displayStr; }
+            set { displayStr = value; }
+        }
+        private string resultStr = string.Empty;
+
+        public string ResultStr
+        {
+            get { return resultStr; }
+            set { resultStr = value; }
+        }
+
+        private char opr;
+
+        public char Opr
+        {
+            get { return opr; }
+            set { opr = value; }
+        }
 
         private double result;
+
+        public double Result
+        {
+            get { return result; }
+            set { result = value; }
+        }
         private double num1;
         private double num2;
 
@@ -20,28 +44,39 @@ namespace SimpleCalculator
 
         public string Back()
         {
-            if (displayText.Length > 0)
+            if (resultStr.Length > 0)
             {
-                displayText = displayText.Remove(displayText.Length - 1);
+                resultStr = resultStr.Remove(resultStr.Length - 1);
             }
-            return displayText;
+            else
+            {
+                resultStr = "0";
+            }
+            return resultStr;
         }
 
         public string Clear()
         {
-            displayText = string.Empty;
-            return displayText;
+            displayStr = string.Empty;
+            return displayStr;
+        }
+
+        public string RClear()
+        {
+            resultStr = "0";
+            return resultStr;
         }
 
         public string NumberKey(string num)
         {
-            displayText += num;
-            return displayText;
+            displayStr += num;
+            return displayStr;
         }
 
         public string Calc()
         {
-            switch (Opr)
+            NumChange();
+            switch (opr)
             {
                 case '+':
                     result = num1 + num2;
@@ -56,8 +91,48 @@ namespace SimpleCalculator
                     result = num1 / num2;
                     break;
             }
-            resultText = result.ToString();
-            return resultText;
+            resultStr = result.ToString();
+            return resultStr;
+        }
+
+        public string SetOperatorByLetter(string btnopr)
+        {
+            switch (btnopr)
+            {
+                case "+":
+                    this.opr = '+';
+                    break;
+                case "-":
+                    this.opr = '-';
+                    break;
+                case "*":
+                    this.opr = '*';
+                    break;
+                case "/":
+                    this.opr = '/';
+                    break;
+            }
+            NumChange();
+
+            return opr.ToString();
+        }
+
+        public void NumChange()
+        {
+            if (!first)
+            {
+                num1 = this.result;
+            }
+            else
+            {
+                num2 = this.result;
+            }
+            first = !first;
+        }
+
+        public int DotUsed()
+        {
+            return displayStr.IndexOf(".");
         }
     }
 }
