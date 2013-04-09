@@ -12,6 +12,7 @@ namespace SimpleCalculator
     public partial class calForm : Form
     {
         CCalculator cal;
+        private bool oprUsed = false;
         public calForm()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace SimpleCalculator
         {
             displayText.Text = cal.Clear();
             resultText.Text = cal.RClear();
+            this.oprUsed = false;
         }
 
         private void btnNumber_Click(object sender, EventArgs e)
@@ -43,30 +45,14 @@ namespace SimpleCalculator
             }
         }
 
-        private void btnOperator_Click(object sender, EventArgs e)
+        private void button0_Click(object sender, EventArgs e)
         {
-            if (sender is Button)
+            if (resultText.Text != "0")//when the calculator is not initial state
             {
-                Button btnSender = (Button)sender;
-                try
-                {
-                    cal.Result = Convert.ToDouble(resultText.Text);
-                }
-                catch (FormatException ex)
-                {
-                    return;
-                }
-                if (displayText.Text == "")
-                {
-                    displayText.Text = resultText.Text + cal.SetOperatorByLetter(btnSender.Text);   
-                }
-                else
-                {
-                    displayText.Text += cal.SetOperatorByLetter(btnSender.Text);
-                }
-                cal.DisplayStr = string.Empty;
+                resultText.Text = cal.NumberKey(button0.Text);
             }
         }
+
 
         private void buttonDot_Click(object sender, EventArgs e)
         {
@@ -76,13 +62,46 @@ namespace SimpleCalculator
             }
         }
 
+        private void btnOperator_Click(object sender, EventArgs e)
+        {
+            if (sender is Button)
+            {
+                Button btnSender = (Button)sender;
+                try
+                {
+                    cal.Result = Convert.ToDouble(resultText.Text);
+                    if (this.oprUsed)
+                    {
+                        cal.Calc();
+                    }
+                    this.oprUsed = true;
+                }
+                catch (FormatException ex)// convertion format exception
+                {
+                    return;
+                }
+
+                if (displayText.Text == "")
+                {
+                    displayText.Text = resultText.Text + cal.SetOperatorByLetter(btnSender.Text);   
+                }
+                else
+                {
+                    displayText.Text += resultText.Text + cal.SetOperatorByLetter(btnSender.Text);
+                }
+                cal.ResultStr = string.Empty;
+            }
+        }
+
         private void buttonCal_Click(object sender, EventArgs e)
         {
             cal.Result = Convert.ToDouble(resultText.Text);
             resultText.Text = cal.Calc();
-            displayText.Text = string.Empty; 
+            displayText.Text = string.Empty;
+            this.oprUsed = false;
         }
 
+        #region change the color of the keys
         private void buttonColor_MouseEnter(object sender, EventArgs e)
         {
             if (sender is Button)
@@ -109,12 +128,18 @@ namespace SimpleCalculator
                 btnSender.BackColor = SystemColors.ControlLight;
             }
         }
-        #region 键盘输入按键keydown事件
+        #endregion
+
+        #region the keyboard perform the keydown event
         private void Calc_KeyDown(object sender, KeyEventArgs e)
         {
             Keys key = e.KeyCode;
             switch (key)
             {
+                case Keys.Enter:
+                    buttonCal.PerformClick();
+                    e.Handled = true;
+                    break;
                 case Keys.Back:
                     buttonBack.PerformClick();
                     e.Handled = true;
@@ -219,55 +244,26 @@ namespace SimpleCalculator
                     buttonDot.PerformClick();
                     e.Handled = true;
                     break;
-                case Keys.Enter:
-                    buttonCal.PerformClick();
-                    e.Handled = true;
-                    break;
+                
                 default: break;
             }
-            //if (e.KeyCode == Keys.NumPad0 || e.KeyCode == Keys.D0)
-            //    InsertButton("0");
-            //else if (e.KeyCode == Keys.NumPad1 || e.KeyCode == Keys.D1)
-            //    InsertButton("1");
-            //else if (e.KeyCode == Keys.NumPad2 || e.KeyCode == Keys.D2)
-            //    InsertButton("2");
-            //else if (e.KeyCode == Keys.NumPad3 || e.KeyCode == Keys.D3)
-            //    InsertButton("3");
-            //else if (e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.D4)
-            //    InsertButton("4");
-            //else if (e.KeyCode == Keys.NumPad5 || e.KeyCode == Keys.D5)
-            //    InsertButton("5");
-            //else if (e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.D6)
-            //    InsertButton("6");
-            //else if (e.KeyCode == Keys.NumPad7 || e.KeyCode == Keys.D7)
-            //    InsertButton("7");
-            //else if (e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.D8)
-            //    InsertButton("8");
-            //else if (e.KeyCode == Keys.NumPad9 || e.KeyCode == Keys.D9)
-            //    InsertButton("9");
-            //else if (e.KeyCode == Keys.Back)
-            //    if (this.tbDisplay.Text != "")
-            //        this.tbDisplay.Text = this.tbDisplay.Text.Remove(this.tbDisplay.Text.Length - 1);
-            //    else ;
-            //else if (e.KeyCode == Keys.Divide)
-            //{
-            //    if (!(add || sub || div || mul))
-            //        saveCurrentNumber();
-            //    add = false;
-            //    sub = false;
-            //    div = true;
-            //    mul = false;
-            //}
-            //else if (e.KeyCode == Keys.Multiply)
-            //{
-            //    if (!(add || sub || div || mul))
-            //        saveCurrentNumber();
-            //    add = false;
-            //    sub = false;
-            //    div = false;
-            //    mul = true;
-            //}
         }
-        #endregion
+        #endregion    
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioBtnNormal.Checked == true)
+            {
+                radioBtnScience.Checked = false;
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioBtnScience.Checked == true)
+            {
+                radioBtnNormal.Checked = false;
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace SimpleCalculator
             get { return displayStr; }
             set { displayStr = value; }
         }
-        private string resultStr = string.Empty;
+        private string resultStr = "0";
 
         public string ResultStr
         {
@@ -63,15 +63,34 @@ namespace SimpleCalculator
 
         public string RClear()
         {
+            result = 0;
             resultStr = "0";
             return resultStr;
         }
 
-        public string NumberKey(string num)
+        #region arithmetic operation
+        public double Add(double leftArg, double rightArg)
         {
-            displayStr += num;
-            return displayStr;
+            return leftArg + rightArg;
         }
+
+        public double Subtract(double leftArg, double rightArg)
+        {
+            return leftArg - rightArg;
+        }
+
+        public double Myltiply(double leftArg, double rightArg)
+        {
+            return leftArg * rightArg;
+        }
+
+        public double Divide(double leftArg, double rightArg)
+        {
+            if (Math.Abs(rightArg) < 10e-9)
+                throw new DivideByZeroException(("Error: Division by zero was performed!"));
+            return leftArg / rightArg;
+        }
+        #endregion
 
         public string Calc()
         {
@@ -79,16 +98,24 @@ namespace SimpleCalculator
             switch (opr)
             {
                 case '+':
-                    result = num1 + num2;
+                    result = Add(num1 , num2);
                     break;
                 case '-':
-                    result = num1 - num2;
+                    result = Subtract(num1 , num2);
                     break;
                 case '*':
-                    result = num1 * num2;
+                    result = Myltiply(num1 , num2);
                     break;
                 case '/':
-                    result = num1 / num2;
+                    try
+                    {
+                        result = Divide(num1 , num2);
+                    }
+                    catch(DivideByZeroException exception)
+                    {
+                        resultStr = "divisor can't be 0";
+                        return resultStr;
+                    }
                     break;
             }
             resultStr = result.ToString();
@@ -130,9 +157,22 @@ namespace SimpleCalculator
             first = !first;
         }
 
+        public string NumberKey(string num)
+        {
+            if (resultStr.Equals("0"))
+            {
+                resultStr = num;
+            }
+            else
+            {
+                resultStr += num;
+            }
+            return resultStr;
+        }
+
         public int DotUsed()
         {
-            return displayStr.IndexOf(".");
+            return resultStr.IndexOf(".");
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.displayText = new System.Windows.Forms.TextBox();
             this.resultText = new System.Windows.Forms.TextBox();
             this.buttonBack = new System.Windows.Forms.Button();
@@ -54,7 +55,13 @@
             this.buttonDot = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioBtnNormal = new System.Windows.Forms.RadioButton();
+            this.radioBtnScience = new System.Windows.Forms.RadioButton();
+            this.toolTipSci = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipNorl = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // displayText
@@ -72,7 +79,7 @@
             // resultText
             // 
             this.resultText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.resultText.Font = new System.Drawing.Font("宋体", 24F);
+            this.resultText.Font = new System.Drawing.Font("微软雅黑", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.resultText.Location = new System.Drawing.Point(-1, 31);
             this.resultText.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.resultText.Multiline = true;
@@ -357,7 +364,7 @@
             this.button0.TabIndex = 2;
             this.button0.Text = "0";
             this.button0.UseVisualStyleBackColor = true;
-            this.button0.Click += new System.EventHandler(this.btnNumber_Click);
+            this.button0.Click += new System.EventHandler(this.button0_Click);
             this.button0.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button0.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button0.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -399,11 +406,49 @@
             this.panel1.Size = new System.Drawing.Size(268, 65);
             this.panel1.TabIndex = 7;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioBtnScience);
+            this.groupBox1.Controls.Add(this.radioBtnNormal);
+            this.groupBox1.Location = new System.Drawing.Point(13, 273);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(268, 48);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Calculator Mode";
+            // 
+            // radioBtnNormal
+            // 
+            this.radioBtnNormal.AutoSize = true;
+            this.radioBtnNormal.Checked = true;
+            this.radioBtnNormal.Location = new System.Drawing.Point(47, 20);
+            this.radioBtnNormal.Name = "radioBtnNormal";
+            this.radioBtnNormal.Size = new System.Drawing.Size(59, 16);
+            this.radioBtnNormal.TabIndex = 0;
+            this.radioBtnNormal.TabStop = true;
+            this.radioBtnNormal.Text = "Normal";
+            this.toolTipNorl.SetToolTip(this.radioBtnNormal, "Ignore the order of operations");
+            this.radioBtnNormal.UseVisualStyleBackColor = true;
+            this.radioBtnNormal.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioBtnScience
+            // 
+            this.radioBtnScience.AutoSize = true;
+            this.radioBtnScience.Location = new System.Drawing.Point(149, 20);
+            this.radioBtnScience.Name = "radioBtnScience";
+            this.radioBtnScience.Size = new System.Drawing.Size(65, 16);
+            this.radioBtnScience.TabIndex = 1;
+            this.radioBtnScience.Text = "Science";
+            this.toolTipSci.SetToolTip(this.radioBtnScience, "First multiplication and division, then addition and subtraction");
+            this.radioBtnScience.UseVisualStyleBackColor = true;
+            this.radioBtnScience.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
             // calForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(293, 281);
+            this.ClientSize = new System.Drawing.Size(293, 333);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonCal);
             this.Controls.Add(this.button15);
@@ -428,11 +473,16 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.buttonBack);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "calForm";
             this.Text = "Calculator";
             this.Load += new System.EventHandler(this.calForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -465,6 +515,11 @@
         private System.Windows.Forms.Button buttonDot;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioBtnScience;
+        private System.Windows.Forms.RadioButton radioBtnNormal;
+        private System.Windows.Forms.ToolTip toolTipSci;
+        private System.Windows.Forms.ToolTip toolTipNorl;
 
     }
 }
