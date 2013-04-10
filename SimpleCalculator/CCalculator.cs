@@ -146,7 +146,7 @@ namespace SimpleCalculator
                     {
                         result = Divide(num1 , num2);
                     }
-                    catch (DivideByZeroException exception)//DivideByZeroException may occur
+                    catch (DivideByZeroException ex)//DivideByZeroException may occur
                     {
                         resultStr = "divisor can't be 0";
                         return resultStr;

@@ -18,7 +18,14 @@ namespace SimpleCalculator
         {
             results = 0.00;
             object calresult;
-            calresult = new DataTable().Compute(expression, null);
+            try
+            {
+                calresult = new DataTable().Compute(expression, null);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
             results = Convert.ToDouble(calresult); 
         }
 

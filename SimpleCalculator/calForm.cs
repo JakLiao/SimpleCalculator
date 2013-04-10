@@ -112,7 +112,10 @@ namespace SimpleCalculator
             }
             else
             {
-                displayText.Text += buttonDot.Text;
+                if (displayText.Text.IndexOf(".") == -1)//a bug
+                {
+                    displayText.Text += buttonDot.Text;
+                }
             }
         }
         /// <summary>
@@ -167,16 +170,34 @@ namespace SimpleCalculator
         {
             if (radioBtnNormal.Checked)
             {
-                cal.Result = Convert.ToDouble(resultText.Text);
+                try
+                {
+                    cal.Result = Convert.ToDouble(resultText.Text);
+                }
+                catch (Exception ex)
+                {
+                    resultText.Text = "Error";
+                }
                 resultText.Text = cal.Calc();
                 displayText.Text = string.Empty;
                 this.oprUsed = false;
             }
-            if (radioBtnScience.Checked)
+            else
             {
                 double results;
-                calSci.Compute(displayText.Text, out results);
-                resultText.Text = results.ToString();
+                try
+                {
+                    calSci.Compute(displayText.Text, out results);
+                    resultText.Text = results.ToString();
+                }
+                catch (Exception ex)
+                {
+                    resultText.Text = "Wrong Expression";
+                }  
+            }
+            if (resultText.Text.Length > 13)
+            {
+                resultText.Text = cal.Result.ToString("E8"); //if the result is too long. use scientific notation
             }
         }
 
@@ -195,8 +216,8 @@ namespace SimpleCalculator
             if (sender is Button)
             {
                 Button btnSender = (Button)sender;
-                btnSender.ResetBackColor();
-                //btnSender.BackColor = SystemColors.Control;
+                //btnSender.ResetBackColor();
+                btnSender.BackColor = SystemColors.ButtonHighlight;
             }
         }
 
@@ -218,6 +239,10 @@ namespace SimpleCalculator
             {
                 case Keys.Back:
                     buttonBack.PerformClick();
+                    e.Handled = true;
+                    break;
+                case Keys.C:
+                    buttonClear.PerformClick();
                     e.Handled = true;
                     break;
                 case Keys.NumPad0:
@@ -332,6 +357,7 @@ namespace SimpleCalculator
             if (radioBtnNormal.Checked == true)
             {
                 radioBtnScience.Checked = false;
+                buttonClear_Click(null, null);//clear the text when mode changed
             }
         }
 
@@ -340,6 +366,7 @@ namespace SimpleCalculator
             if (radioBtnScience.Checked == true)
             {
                 radioBtnNormal.Checked = false;
+                buttonClear_Click(null, null);//clear the text when mode changed
             }
         } 
         #endregion
