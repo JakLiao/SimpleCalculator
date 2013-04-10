@@ -55,12 +55,12 @@
             this.buttonDot = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonCalHiden = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioBtnScience = new System.Windows.Forms.RadioButton();
             this.radioBtnNormal = new System.Windows.Forms.RadioButton();
             this.toolTipSci = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipNorl = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonCal_Hiden = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -101,7 +101,7 @@
             this.buttonBack.Text = "←";
             this.buttonBack.UseVisualStyleBackColor = false;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
-            this.buttonBack.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonBack.Enter += new System.EventHandler(this.button_Enter);
             this.buttonBack.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonBack.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonBack.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -116,7 +116,7 @@
             this.buttonClear.Text = "C";
             this.buttonClear.UseVisualStyleBackColor = false;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            this.buttonClear.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonClear.Enter += new System.EventHandler(this.button_Enter);
             this.buttonClear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonClear.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonClear.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -130,7 +130,7 @@
             this.buttonClsOnce.TabIndex = 4;
             this.buttonClsOnce.Text = "CE";
             this.buttonClsOnce.UseVisualStyleBackColor = false;
-            this.buttonClsOnce.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonClsOnce.Enter += new System.EventHandler(this.button_Enter);
             this.buttonClsOnce.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonClsOnce.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonClsOnce.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -144,7 +144,7 @@
             this.buttonFu.TabIndex = 5;
             this.buttonFu.Text = "±";
             this.buttonFu.UseVisualStyleBackColor = false;
-            this.buttonFu.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonFu.Enter += new System.EventHandler(this.button_Enter);
             this.buttonFu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonFu.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonFu.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -158,7 +158,7 @@
             this.buttonSqrt.TabIndex = 6;
             this.buttonSqrt.Text = "√";
             this.buttonSqrt.UseVisualStyleBackColor = false;
-            this.buttonSqrt.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonSqrt.Enter += new System.EventHandler(this.button_Enter);
             this.buttonSqrt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonSqrt.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonSqrt.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -172,7 +172,7 @@
             this.button7.Text = "7";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.btnNumber_Click);
-            this.button7.Enter += new System.EventHandler(this.button2_Enter);
+            this.button7.Enter += new System.EventHandler(this.button_Enter);
             this.button7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button7.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button7.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -186,7 +186,7 @@
             this.button9.Text = "9";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.btnNumber_Click);
-            this.button9.Enter += new System.EventHandler(this.button2_Enter);
+            this.button9.Enter += new System.EventHandler(this.button_Enter);
             this.button9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button9.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button9.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -200,7 +200,7 @@
             this.button8.Text = "8";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.btnNumber_Click);
-            this.button8.Enter += new System.EventHandler(this.button2_Enter);
+            this.button8.Enter += new System.EventHandler(this.button_Enter);
             this.button8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button8.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button8.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -215,7 +215,7 @@
             this.buttonDivide.Text = "/";
             this.buttonDivide.UseVisualStyleBackColor = false;
             this.buttonDivide.Click += new System.EventHandler(this.btnOperator_Click);
-            this.buttonDivide.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonDivide.Enter += new System.EventHandler(this.button_Enter);
             this.buttonDivide.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonDivide.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonDivide.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -229,7 +229,7 @@
             this.buttonPerc.TabIndex = 6;
             this.buttonPerc.Text = "%";
             this.buttonPerc.UseVisualStyleBackColor = false;
-            this.buttonPerc.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonPerc.Enter += new System.EventHandler(this.button_Enter);
             this.buttonPerc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonPerc.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonPerc.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -243,7 +243,7 @@
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.btnNumber_Click);
-            this.button4.Enter += new System.EventHandler(this.button2_Enter);
+            this.button4.Enter += new System.EventHandler(this.button_Enter);
             this.button4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button4.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button4.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -257,7 +257,7 @@
             this.button6.Text = "6";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.btnNumber_Click);
-            this.button6.Enter += new System.EventHandler(this.button2_Enter);
+            this.button6.Enter += new System.EventHandler(this.button_Enter);
             this.button6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button6.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button6.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -271,7 +271,7 @@
             this.button5.Text = "5";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.btnNumber_Click);
-            this.button5.Enter += new System.EventHandler(this.button2_Enter);
+            this.button5.Enter += new System.EventHandler(this.button_Enter);
             this.button5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button5.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button5.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -286,7 +286,7 @@
             this.buttonMul.Text = "*";
             this.buttonMul.UseVisualStyleBackColor = false;
             this.buttonMul.Click += new System.EventHandler(this.btnOperator_Click);
-            this.buttonMul.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonMul.Enter += new System.EventHandler(this.button_Enter);
             this.buttonMul.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonMul.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonMul.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -300,7 +300,7 @@
             this.button15.TabIndex = 6;
             this.button15.Text = "1/x";
             this.button15.UseVisualStyleBackColor = false;
-            this.button15.Enter += new System.EventHandler(this.button2_Enter);
+            this.button15.Enter += new System.EventHandler(this.button_Enter);
             this.button15.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button15.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button15.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -314,7 +314,7 @@
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnNumber_Click);
-            this.button1.Enter += new System.EventHandler(this.button2_Enter);
+            this.button1.Enter += new System.EventHandler(this.button_Enter);
             this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button1.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button1.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -328,7 +328,7 @@
             this.button3.Text = "3";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.btnNumber_Click);
-            this.button3.Enter += new System.EventHandler(this.button2_Enter);
+            this.button3.Enter += new System.EventHandler(this.button_Enter);
             this.button3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button3.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button3.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -342,7 +342,7 @@
             this.button2.Text = "2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnNumber_Click);
-            this.button2.Enter += new System.EventHandler(this.button2_Enter);
+            this.button2.Enter += new System.EventHandler(this.button_Enter);
             this.button2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button2.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button2.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -357,7 +357,7 @@
             this.buttonMinus.Text = "-";
             this.buttonMinus.UseVisualStyleBackColor = false;
             this.buttonMinus.Click += new System.EventHandler(this.btnOperator_Click);
-            this.buttonMinus.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonMinus.Enter += new System.EventHandler(this.button_Enter);
             this.buttonMinus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonMinus.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonMinus.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -372,7 +372,7 @@
             this.buttonCal.Text = "=";
             this.buttonCal.UseVisualStyleBackColor = false;
             this.buttonCal.Click += new System.EventHandler(this.buttonCal_Click);
-            this.buttonCal.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonCal.Enter += new System.EventHandler(this.button_Enter);
             this.buttonCal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonCal.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonCal.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -386,7 +386,7 @@
             this.button0.Text = "0";
             this.button0.UseVisualStyleBackColor = true;
             this.button0.Click += new System.EventHandler(this.button0_Click);
-            this.button0.Enter += new System.EventHandler(this.button2_Enter);
+            this.button0.Enter += new System.EventHandler(this.button_Enter);
             this.button0.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.button0.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.button0.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -400,7 +400,7 @@
             this.buttonDot.Text = ".";
             this.buttonDot.UseVisualStyleBackColor = true;
             this.buttonDot.Click += new System.EventHandler(this.buttonDot_Click);
-            this.buttonDot.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonDot.Enter += new System.EventHandler(this.button_Enter);
             this.buttonDot.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonDot.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonDot.MouseLeave += new System.EventHandler(this.buttonColor_MouseLeave);
@@ -415,7 +415,7 @@
             this.buttonAdd.Text = "+";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.btnOperator_Click);
-            this.buttonAdd.Enter += new System.EventHandler(this.button2_Enter);
+            this.buttonAdd.Enter += new System.EventHandler(this.button_Enter);
             this.buttonAdd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Calc_KeyDown);
             this.buttonAdd.MouseEnter += new System.EventHandler(this.buttonColor_MouseEnter);
             this.buttonAdd.MouseLeave += new System.EventHandler(this.buttonLightColor_MouseLeave);
@@ -423,13 +423,22 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.buttonCal_Hiden);
-            this.panel1.Controls.Add(this.resultText);
             this.panel1.Controls.Add(this.displayText);
+            this.panel1.Controls.Add(this.buttonCalHiden);
+            this.panel1.Controls.Add(this.resultText);
             this.panel1.Location = new System.Drawing.Point(13, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(268, 65);
             this.panel1.TabIndex = 7;
+            // 
+            // buttonCalHiden
+            // 
+            this.buttonCalHiden.Location = new System.Drawing.Point(85, 2);
+            this.buttonCalHiden.Name = "buttonCalHiden";
+            this.buttonCalHiden.Size = new System.Drawing.Size(93, 23);
+            this.buttonCalHiden.TabIndex = 9;
+            this.buttonCalHiden.UseVisualStyleBackColor = false;
+            this.buttonCalHiden.Click += new System.EventHandler(this.buttonCal_Click);
             // 
             // groupBox1
             // 
@@ -453,6 +462,7 @@
             this.toolTipSci.SetToolTip(this.radioBtnScience, "First multiplication and division, then addition and subtraction");
             this.radioBtnScience.UseVisualStyleBackColor = true;
             this.radioBtnScience.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioBtnScience.Enter += new System.EventHandler(this.button_Enter);
             // 
             // radioBtnNormal
             // 
@@ -467,16 +477,7 @@
             this.toolTipNorl.SetToolTip(this.radioBtnNormal, "Ignore the order of operations");
             this.radioBtnNormal.UseVisualStyleBackColor = true;
             this.radioBtnNormal.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // buttonCal_Hiden
-            // 
-            this.buttonCal_Hiden.Location = new System.Drawing.Point(85, 2);
-            this.buttonCal_Hiden.Name = "buttonCal_Hiden";
-            this.buttonCal_Hiden.Size = new System.Drawing.Size(93, 23);
-            this.buttonCal_Hiden.TabIndex = 9;
-            this.buttonCal_Hiden.UseVisualStyleBackColor = true;
-            this.buttonCal_Hiden.Visible = false;
-            this.buttonCal_Hiden.Click += new System.EventHandler(this.buttonCal_Click);
+            this.radioBtnNormal.Enter += new System.EventHandler(this.button_Enter);
             // 
             // calForm
             // 
@@ -555,7 +556,7 @@
         private System.Windows.Forms.RadioButton radioBtnNormal;
         private System.Windows.Forms.ToolTip toolTipSci;
         private System.Windows.Forms.ToolTip toolTipNorl;
-        private System.Windows.Forms.Button buttonCal_Hiden;
+        private System.Windows.Forms.Button buttonCalHiden;
 
     }
 }

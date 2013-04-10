@@ -344,10 +344,9 @@ namespace SimpleCalculator
         } 
         #endregion
 
-        private void button2_Enter(object sender, EventArgs e)
+        private void button_Enter(object sender, EventArgs e)
         {
-            this.buttonCal_Hiden.Focus();
+            this.buttonCal.Focus();
         }
-
     }
 }
