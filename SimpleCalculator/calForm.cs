@@ -12,6 +12,7 @@ namespace SimpleCalculator
     public partial class calForm : Form
     {
         CCalculator cal;
+        SCalculator calSci;
         private bool oprUsed = false;
         public calForm()
         {
@@ -22,83 +23,161 @@ namespace SimpleCalculator
         {
             displayText.Text = string.Empty;
             cal = new CCalculator();
+            calSci = new SCalculator();
         }
-
+        /// <summary>
+        /// buttonBack Click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            resultText.Text = cal.Back();
+            if (radioBtnNormal.Checked)
+            {
+                resultText.Text = cal.Back();
+            }
+            else
+            {
+                string str = displayText.Text;
+                if (str.Length > 0)
+                {
+                    displayText.Text = str.Remove(str.Length - 1);
+                }
+            }
         }
-
+        /// <summary>
+        /// buttonClear Click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonClear_Click(object sender, EventArgs e)
         {
             displayText.Text = cal.Clear();
             resultText.Text = cal.RClear();
             this.oprUsed = false;
+            //this.isCaled = false;
         }
-
+        /// <summary>
+        /// button 1~9 Click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNumber_Click(object sender, EventArgs e)
         {
             if (sender is Button)
             {
                 Button btnSender = (Button)sender;
-                resultText.Text = cal.NumberKey(btnSender.Text);
+                if (radioBtnNormal.Checked)
+                {
+                    resultText.Text = cal.NumberKey(btnSender.Text);
+                }
+                else
+                {
+                    displayText.Text += btnSender.Text;
+                }
             }
         }
-
+        /// <summary>
+        /// button 0 Click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button0_Click(object sender, EventArgs e)
         {
-            if (resultText.Text != "0")//when the calculator is not initial state
+            if (radioBtnNormal.Checked)
             {
-                resultText.Text = cal.NumberKey(button0.Text);
+                if (resultText.Text != "0")//when the calculator is not initial state
+                {
+                    resultText.Text = cal.NumberKey(button0.Text);
+                }
+            }
+            else
+            {
+                displayText.Text += button0.Text;
             }
         }
-
-
+        /// <summary>
+        /// button "." Click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDot_Click(object sender, EventArgs e)
         {
-            if (cal.DotUsed() == -1)
+            if (radioBtnNormal.Checked)
             {
-                resultText.Text = cal.NumberKey(buttonDot.Text);
+                if (cal.DotUsed() == -1)
+                {
+                    resultText.Text = cal.NumberKey(buttonDot.Text);
+                }
+            }
+            else
+            {
+                displayText.Text += buttonDot.Text;
             }
         }
-
+        /// <summary>
+        /// button "+-*/" Click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOperator_Click(object sender, EventArgs e)
         {
             if (sender is Button)
             {
                 Button btnSender = (Button)sender;
-                try
-                {
-                    cal.Result = Convert.ToDouble(resultText.Text);
-                    if (this.oprUsed)
-                    {
-                        cal.Calc();
-                    }
-                    this.oprUsed = true;
-                }
-                catch (FormatException ex)// convertion format exception
-                {
-                    return;
-                }
 
-                if (displayText.Text == "")
+                if (radioBtnNormal.Checked)
                 {
-                    displayText.Text = resultText.Text + cal.SetOperatorByLetter(btnSender.Text);   
+                    try
+                    {
+                        cal.Result = Convert.ToDouble(resultText.Text);
+                        if (this.oprUsed)
+                        {
+                            cal.Calc();
+                        }
+                        this.oprUsed = true;
+                    }
+                    catch (FormatException ex)// convertion format exception
+                    {
+                        return;
+                    }
+
+                    if (displayText.Text == "")
+                    {
+                        displayText.Text = resultText.Text + cal.SetOperatorByLetter(btnSender.Text);
+                    }
+                    else
+                    {
+                        displayText.Text += resultText.Text + cal.SetOperatorByLetter(btnSender.Text);
+                    }
+                    cal.ResultStr = string.Empty;
                 }
                 else
                 {
-                    displayText.Text += resultText.Text + cal.SetOperatorByLetter(btnSender.Text);
+                    displayText.Text += btnSender.Text;
                 }
-                cal.ResultStr = string.Empty;
             }
         }
-
+        /// <summary>
+        /// button "=" Click event, Calculate the result
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCal_Click(object sender, EventArgs e)
         {
-            cal.Result = Convert.ToDouble(resultText.Text);
-            resultText.Text = cal.Calc();
-            displayText.Text = string.Empty;
-            this.oprUsed = false;
+            if (radioBtnNormal.Checked)
+            {
+                cal.Result = Convert.ToDouble(resultText.Text);
+                resultText.Text = cal.Calc();
+                displayText.Text = string.Empty;
+                this.oprUsed = false;
+            }
+            if (radioBtnScience.Checked)
+            {
+                double results;
+                calSci.Compute(displayText.Text, out results);
+                resultText.Text = results.ToString();
+            }
         }
 
         #region change the color of the keys
@@ -117,6 +196,7 @@ namespace SimpleCalculator
             {
                 Button btnSender = (Button)sender;
                 btnSender.ResetBackColor();
+                //btnSender.BackColor = SystemColors.Control;
             }
         }
 
@@ -136,10 +216,6 @@ namespace SimpleCalculator
             Keys key = e.KeyCode;
             switch (key)
             {
-                case Keys.Enter:
-                    buttonCal.PerformClick();
-                    e.Handled = true;
-                    break;
                 case Keys.Back:
                     buttonBack.PerformClick();
                     e.Handled = true;
@@ -250,6 +326,7 @@ namespace SimpleCalculator
         }
         #endregion    
 
+        #region Change the state of the radiobutton in order the control the mode of this calculator
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioBtnNormal.Checked == true)
@@ -264,6 +341,13 @@ namespace SimpleCalculator
             {
                 radioBtnNormal.Checked = false;
             }
+        } 
+        #endregion
+
+        private void button2_Enter(object sender, EventArgs e)
+        {
+            this.buttonCal_Hiden.Focus();
         }
+
     }
 }

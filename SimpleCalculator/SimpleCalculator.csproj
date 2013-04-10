@@ -55,6 +55,7 @@
     <Compile Include="CCalculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SCalculator.cs" />
     <EmbeddedResource Include="calForm.resx">
       <DependentUpon>calForm.cs</DependentUpon>
     </EmbeddedResource>
